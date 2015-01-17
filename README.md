@@ -3,9 +3,32 @@
 ```js
 2015-01-16T13:45:11.909+0100 check 9 8200
 2015-01-16T13:45:12.159+0100 imported 8199 objects
+
+
+var mapFunction = function () {
+var slowa = this.upload
+var sign = slowa.split("").sort().join("");
+         emit(sign, slowa);
+         }
+var reduceFunction = function (key,value) {
+        return (value.join(" "));
+}
+db.runCommand(
+{
+        mapReduce: "letters",
+        map: mapFunction,
+        reduce: reduceFunction,
+        out: "anagram",
+        verbose: true,
+    }
+    )
+
 ```
+
 ![screen2](https://github.com/mperkowski/MapReduce/blob/master/ana.png)
 ```js
+
+    
 db.anagram.find(
     { $where : "this.value.length > 7"}
         ).sort({ _id : -1}
@@ -38,7 +61,22 @@ W wyniku otrzymuję słowa, które posiadają minimum dwa anagramy
 
 Skorzystalem z wlasnych danych, wygenerowanych json'ów:<br />
 Wyszukiwanie najczesciej wystepujacych slow:
+```js
+db.runCommand(
+{
+mapreduce: "people",
+map:
+function(){ emit( this.first_name, 1)},
+reduce:
+function(key,values) { return Array.sum(values);},
+out: "result"
+})
+```
+
 ![screen1](https://github.com/mperkowski/MapReduce/blob/master/mostof.png)
+
+Najczesciej wystepujace slowa oraz ilosc wystapien
+
 ```js
 db.result.find().sort({ value: -1 })
 
@@ -65,7 +103,7 @@ db.result.find().sort({ value: -1 })
 Type "it" for more
 ```
 
-Najczesciej wystepujace slowa oraz ilosc wystapien
+
 
 
 
