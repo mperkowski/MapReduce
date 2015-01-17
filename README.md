@@ -1,4 +1,5 @@
 #Anagramy
+![screenshot](https://github.com/mperkowski/MapReduce/blob/master/import.png)
 ```js
 2015-01-16T13:45:11.909+0100 check 9 8200
 2015-01-16T13:45:12.159+0100 imported 8199 objects
