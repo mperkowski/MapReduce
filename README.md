@@ -3,6 +3,7 @@
 2015-01-16T13:45:11.909+0100 check 9 8200
 2015-01-16T13:45:12.159+0100 imported 8199 objects
 ```
+![screen2](https://github.com/mperkowski/MapReduce/blob/master/ana.png)
 ```js
 db.anagram.find(
     { $where : "this.value.length > 7"}
@@ -30,11 +31,13 @@ db.anagram.find(
 { "_id" : "innosu", "value" : "unions unison" }
 { "_id" : "imnost", "value" : "inmost monist" }
 ```
-
+Powyzsze zapytanie zwraca value wieksze od 7 w tym wypadku 6 liter pierwszego anagramu i znak spacji<br />
+W wyniku otrzymuję słowa, które posiadają minimum dwa anagramy
 # MapReduce
 
 Skorzystalem z wlasnych danych, wygenerowanych json'ów:<br />
 Wyszukiwanie najczesciej wystepujacych slow:
+![screen1](https://github.com/mperkowski/MapReduce/blob/master/mostof.png)
 ```js
 db.result.find().sort({ value: -1 })
 
