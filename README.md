@@ -64,5 +64,7 @@ db.result.find().sort({ value: -1 })
 Type "it" for more
 ```
 
+Najczesciej wystepujace slowa oraz ilosc wystapien
+
 
 
